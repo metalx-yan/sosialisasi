@@ -18,14 +18,25 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'role:administrator'
 
         return view('admin.index');
     });
+
+    Route::resource('barang', 'ItemController');
+
+    Route::resource('kategori', 'CategoryController');
+
+    Route::resource('purchase', 'PurchaseController');
         
 });
 
 Route::group(['prefix' => 'purchasing', 'middleware' => ['auth', 'role:purchasing']], function() {
     Route::get('/', function () {
 
-        return view('purchasing.index');
+        return view('purchasing.indux');
     });
+
+    Route::resource('request', 'RequestController');
+    Route::get('/invoice-pdf', 'RequestController@pdf')->name('pdf');
+
+    // Route::resource('barang', 'ItemController');
     
 });
 
@@ -34,6 +45,11 @@ Route::group(['prefix' => 'manager', 'middleware' => ['auth', 'role:manager']], 
 
         return view('manager.index');
     });
+
+    Route::get('/permintaan', 'RequestController@acc')->name('manager.acc');
+    Route::put('permintaan/{id}', 'RequestController@accpost')->name('manager.barang.post');
+    Route::put('permintaan/decline/{id}', 'RequestController@accpostdecline')->name('manager.barang.post.decline');
+    // Route::get('permintaan', 'ItemController@acc')->name('manager.barang');
     
 });
 
@@ -46,3 +62,6 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+
+

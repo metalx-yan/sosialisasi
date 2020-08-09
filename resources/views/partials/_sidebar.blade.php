@@ -18,15 +18,15 @@
                     @if (Auth::user()->role->name == 'administrator')
                     <li class="nav-small-cap">PERSONAL</li>
                         <li>
-                        <a class="" href="" aria-expanded="false"><i class="mdi mdi-gauge"></i><span class="hide-menu">Dashboard</span></a>
+                        <a class="" href="{{ url('/admin')}}" aria-expanded="false"><i class="mdi mdi-gauge"></i><span class="hide-menu">Dashboard</span></a>
                         </li>
 
                         <li>
-                            <a class="has-arrow" href="#" aria-expanded="false"><i class="mdi mdi-account-outline"></i><span class="hide-menu">Data Rekrutmen</span></a>
+                            <a class="has-arrow" href="#" aria-expanded="false"><i class="mdi mdi-account-outline"></i><span class="hide-menu">Master Data</span></a>
                             <ul aria-expanded="false" class="collapse">
-                                <li><a href="  ">Jadwal Wawancara</a></li>
-                                <li><a href=" ">Data Pelamar</a></li>
-                                <li><a href="  ">Lowongan Kerja</a></li>
+                                <li><a href="{{ route('kategori.index') }}">Data Kategori</a></li>
+                                <li><a href="{{ route('barang.index') }}">Data Barang</a></li>
+                                <li><a href="{{ route('purchase.index') }}">Data Supplier</a></li>
                                 {{-- <li><a href=" {{ route('criteria.index') }} ">Kriteria</a></li>
                                 <li><a href=" {{ route('requirement.index') }} ">Persyaratan Pelamar</a></li> --}}
                             </ul>
@@ -37,16 +37,14 @@
                     
                     @if (Auth::user()->role->name == 'purchasing')
                     <li class="nav-small-cap">PERSONAL</li>
-                    <li>
-                        <a class="" href="" aria-expanded="false"><i class="mdi mdi-gauge"></i><span class="hide-menu">Dashboard</span></a>
-                    </li>
+                    {{-- <li>
+                        <a class="" href="{{ route('request.index') }}" aria-expanded="false"><i class="mdi mdi-gauge"></i><span class="hide-menu">Dashboard Permintaan Barang</span></a>
+                    </li> --}}
 
                     <li>
-                        <a class="has-arrow" href="#" aria-expanded="false"><i class="mdi mdi-account-outline"></i><span class="hide-menu">Data Rekrutmen</span></a>
+                        <a class="has-arrow" href="#" aria-expanded="false"><i class="mdi mdi-account-outline"></i><span class="hide-menu">Dashboard</span></a>
                         <ul aria-expanded="false" class="collapse">
-                            <li><a href="">Daftar Pelamar</a></li>
-                            <li><a href="">Daftar Pelamar Seleksi</a></li>
-                            <li><a href="">Status Pelamar</a></li>
+                            <li><a href="{{ route('request.index') }}">Permintaan Barang</a></li>
                         </ul>
                     </li>
                       
@@ -55,13 +53,13 @@
                     @if (Auth::user()->role->name == 'manager')
                     <li class="nav-small-cap">PERSONAL</li>
                     <li>
-                        <a class="" href="" aria-expanded="false"><i class="mdi mdi-gauge"></i><span class="hide-menu">Dashboard</span></a>
+                        <a class="" href="{{ url('/manager')}}" aria-expanded="false"><i class="mdi mdi-gauge"></i><span class="hide-menu">Dashboard</span></a>
                     </li>
 
                     <li>
-                        <a class="has-arrow" href="#" aria-expanded="false"><i class="mdi mdi-account-outline"></i><span class="hide-menu">Data Rekrutmen</span></a>
+                        <a class="has-arrow" href="#" aria-expanded="false"><i class="mdi mdi-account-outline"></i><span class="hide-menu">Data Barang</span></a>
                         <ul aria-expanded="true" class="collapse">
-                            <li><a href="{{ url('/home') }}">Daftar Pelamar</a></li>
+                            <li><a href="{{ route('manager.acc') }}">Permintaan Barang</a></li>
                             {{-- <li>Daftar Pelamar Seleksi</li> --}}
                             {{-- <li><a href="">Status Pelamar</a></li> --}}
                         </ul>

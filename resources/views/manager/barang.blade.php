@@ -12,29 +12,21 @@
             </ol>
         </div>
     </div>
-
+@php
+    $no = 1;
+@endphp
     <div class="card">
         <div class="card-title">
            
         </div>
-        @php
-            $no = 1;
-        @endphp
         <div class="card-body">
-            <a href="{{ route('request.create') }}" class="btn btn-primary btn-sm">Tambah Permintaan</a>
-            <br>
-            <br>
-            <a href="{{ route('pdf') }}" class="btn btn-info btn-sm">PDF</a>
             <table class="table border" id="myTable">
                 <thead>
                     <tr>
-                        {{-- <th>Tanggal Buat</th> --}}
                         <th>No</th>
                         <th>Barang</th>
                         <th>Supplier</th>
-                        <th>Tanggal Order</th>
                         <th>Jumlah</th>
-                        <th>Deskripsi</th>
                         <th>Status</th>
                         <th>Action</th>
                     </tr>
@@ -45,9 +37,7 @@
                             <td>{{ $no++ }}</td>
                             <td>{{ $item->item->name }}</td>
                             <td>{{ $item->purchase->name }}</td>
-                            <td>{{ $item->date }}</td>
                             <td>{{ $item->total }}</td>
-                            <td>{{ Illuminate\Support\Str::limit($item->description, 20) }} </td>
                             @if ($item->status == 0)
                                 <td> <span class="badge badge-warning">Belum Diproses</span></td>
                             @elseif ($item->status == 1)
@@ -56,24 +46,31 @@
                                 <td> <span class="badge badge-danger">Ditolak</span></td>
                             @endif
                             <td> 
-                                @if ($item->status != 0)
-                                    
-                                @else
                                 <div class="row">
+                                    {{-- <div class="col-md-2">
+                                        <a href="{{ route('barang.edit', $item->id ) }}" class="btn btn-warning btn-sm">Edit</a>
+                                    </div> --}}
+                                    @if ($item->status == 0)
                                         <div class="col-md-2">
-                                            <a href="{{ route('request.edit', $item->id ) }}" class="btn btn-warning btn-sm">Edit</a>
+                                            <form action="{{ route('manager.barang.post', $item->id) }}" method="post">
+                                                @csrf
+                                                @method('PUT')
+                                                <button type="submit" class="btn btn-success btn-sm">Acc</button>
+                                            </form>
                                         </div>
                                         <div class="col-md-1">
                                         </div>
                                         <div class="col-md-2">
-                                            <form action="{{ route('request.destroy', $item->id) }}" method="post">
+                                            <form action="{{ route('manager.barang.post.decline', $item->id) }}" method="post">
                                                 @csrf
-                                                @method('DELETE')
-                                                <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+                                                @method('PUT')
+                                                <button type="submit" class="btn btn-danger btn-sm">Tolak</button>
                                             </form>
                                         </div>
-                                    </div>
-                                @endif
+                                    @else
+                                        
+                                    @endif
+                                </div>
                             </td>
                         </tr>
                     @endforeach

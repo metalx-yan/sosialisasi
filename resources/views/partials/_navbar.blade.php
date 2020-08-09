@@ -17,7 +17,8 @@
                     <!-- Logo text -->
                     <span>
                      <!-- dark Logo text -->
-                     <img src="http://www.prospera-perwira.com/img/logo_prospera.png " height="50%" width="50%" alt="homepage" class="dark-logo" />
+                     <img src="{{ asset('images/pck.jpeg') }}" height="60%" width="60%" alt="homepage" class="dark-logo" />
+                     {{-- <span style="font-size: 13px; font-weight: bold">PT Sagita Indo Kreasi</span> --}}
                      <!-- Light Logo text -->    
                      <img src="{{ asset('images/logo-light-text.png') }}" class="light-logo" alt="homepage" /></span> </a>
             </div>
