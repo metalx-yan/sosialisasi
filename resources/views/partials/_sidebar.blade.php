@@ -27,10 +27,10 @@
                                 <li><a href="{{ route('kategori.index') }}">Data Kategori</a></li>
                                 <li><a href="{{ route('barang.index') }}">Data Barang</a></li>
                                 <li><a href="{{ route('purchase.index') }}">Data Supplier</a></li>
-                                {{-- <li><a href=" {{ route('criteria.index') }} ">Kriteria</a></li>
-                                <li><a href=" {{ route('requirement.index') }} ">Persyaratan Pelamar</a></li> --}}
                             </ul>
                         </li>
+                        <li><a href="{{ route('masuk') }}"><i class="mdi mdi-checkbox-marked-circle-outline"></i>Barang Masuk</a></li>
+                        <li><a href="{{ route('keluar') }}"><i class="mdi mdi-checkbox-multiple-marked-outline"></i>Barang Keluar</a></li>
                        
                     @endif
                     
@@ -60,8 +60,7 @@
                         <a class="has-arrow" href="#" aria-expanded="false"><i class="mdi mdi-account-outline"></i><span class="hide-menu">Data Barang</span></a>
                         <ul aria-expanded="true" class="collapse">
                             <li><a href="{{ route('manager.acc') }}">Permintaan Barang</a></li>
-                            {{-- <li>Daftar Pelamar Seleksi</li> --}}
-                            {{-- <li><a href="">Status Pelamar</a></li> --}}
+                            
                         </ul>
                     </li>
                       

@@ -38,7 +38,8 @@ class PurchaseController extends Controller
     public function store(Request $request)
     {
         $vali = $request->validate([
-            'name' => 'required|string'
+            'name' => 'required|string',
+            'address' => 'required|string'
         ]);
 
         Purchase::create($vali);
@@ -80,11 +81,13 @@ class PurchaseController extends Controller
     public function update(Request $request, $id)
     {
         $vali = $request->validate([
-            'name' => "required|string"
+            'name' => "required|string",
+            'address' => "required|string"
         ]);
 
         $user           = Purchase::findOrFail($id);
         $user->name     = $request->name;
+        $user->address     = $request->address;
         $user->save();
 
         return redirect()->route('purchase.index');

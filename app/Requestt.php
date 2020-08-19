@@ -8,7 +8,7 @@ class Requestt extends Model
 {
     protected $table = 'requests';
 
-    protected $fillable = ['description', 'total', 'purchase_id', 'status', 'date','item_id'];
+    protected $fillable = ['description', 'total_masuk', 'total_keluar', 'purchase_id', 'status', 'date','item_id'];
 
     public function item()
     {

@@ -7,7 +7,8 @@
         <meta name="author" content="">
         <!-- Favicon icon -->
         <link rel="icon" type="image/png" sizes="16x16" href="../assets/images/favicon.png">
-        <title>Monster Admin Template - The Most Complete & Trusted Bootstrap 4 Admin Template</title>
+        {{-- <title>Monster Admin Template - The Most Complete & Trusted Bootstrap 4 Admin Template</title> --}}
+        <title>PCK - @yield('title')</title>
         <!-- Bootstrap Core CSS -->
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
         {{-- <link href=" {{ asset('assets/plugins/bootstrap/css/bootstrap.min.css') }} " rel="stylesheet"> --}}
@@ -19,6 +20,7 @@
         <link href=" {{ asset('assets/plugins/chartist-plugin-tooltip-master/dist/chartist-plugin-tooltip.css') }} " rel="stylesheet">
         <link href="{{ asset('assets/plugins/css-chart/css-chart.css') }}" rel="stylesheet">
         <!-- Custom CSS -->
+        <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
         
         <link href="{{ asset('css/style.css') }}" rel="stylesheet">
         <!-- You can change the theme colors from here -->

@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Purchase extends Model
 {
-    protected $fillable = ['name'];
+    protected $fillable = ['name', 'address'];
 
     public function requests()
     {

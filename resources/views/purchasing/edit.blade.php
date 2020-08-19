@@ -46,8 +46,8 @@
                     </div>
                     <div class="col-md-3">
                         <label for="">Total</label>
-                        <input type="number" name="total" value="{{ $get->total }}" class="form-control {{ $errors->has('total') ? 'is-invalid' : ''}}" required>
-                        {!! $errors->first('total', '<span class="invalid-feedback">:message</span>') !!}
+                        <input type="number" name="total_masuk" value="{{ $get->total_masuk }}" class="form-control {{ $errors->has('total_masuk') ? 'is-invalid' : ''}}" required>
+                        {!! $errors->first('total_masuk', '<span class="invalid-feedback">:message</span>') !!}
                     </div>
                     <div class="col-md-3">
                         <label for="">Tanggal Order</label>

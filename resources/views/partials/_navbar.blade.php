@@ -79,10 +79,10 @@
                                             {{-- <a href=" {{ Auth::user()->role->name == 'administrator' ?  route('viewdata.admin', Auth::user()->id) :  route('viewdata.hrd', Auth::user()->id) }} " class="btn btn-rounded btn-danger btn-sm">View Profile</a></div> --}}
                                     </div>
                                 </li>
-                                @if (Auth::user()->role->name == 'administrator')
+                                {{-- @if (Auth::user()->role->name == 'administrator')
                                 <hr>
                                     <li><a href="  "><i class="ti-wallet"></i> Add Account</a></li>
-                                @endif
+                                @endif --}}
                                 {{-- <li><a href="#"><i class="ti-email"></i></a></li> --}}
                                 <li role="separator" class="divider"></li>
                                 {{-- <li><a href="#"><i class="ti-settings"></i> Account Setting</a></li> --}}

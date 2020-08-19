@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Item;
+use App\Requestt;
 
 class ItemController extends Controller
 {
@@ -16,6 +17,36 @@ class ItemController extends Controller
     {
         $all = Item::all();
         return view('barang.index', compact('all'));
+    }
+
+    public function masuk()
+    {
+        $masuk = Requestt::where('status', 1)->get();
+
+        return view('barang.masuk', compact('masuk'));
+    }
+
+    public function keluar(Request $request)
+    {
+        // dd($request);
+        $keluar = Requestt::where('status', 1)->get();
+
+        return view('barang.keluar', compact('keluar'));
+    }
+
+    public function keluarpost(Request $request)
+    {
+        // dd($request->all());
+        $request->validate([
+            'total_keluar'      =>  'required|numeric',
+        ]);
+
+        $update = Requestt::find($request->id);
+        $update->total_masuk = $update->total_masuk - $request->total_keluar;
+        $update->total_keluar = $request->total_keluar;
+        $update->save();
+
+        return redirect()->route('keluar');
     }
 
     /**

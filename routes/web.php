@@ -19,6 +19,12 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'role:administrator'
         return view('admin.index');
     });
 
+    Route::get('/barang/masuk', 'ItemController@masuk')->name('masuk');
+
+    Route::get('/barang/keluar', 'ItemController@keluar')->name('keluar');
+
+    Route::put('/barang/keluar/{id?}', 'ItemController@keluarpost')->name('keluarpost');
+
     Route::resource('barang', 'ItemController');
 
     Route::resource('kategori', 'CategoryController');
@@ -28,28 +34,26 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'role:administrator'
 });
 
 Route::group(['prefix' => 'purchasing', 'middleware' => ['auth', 'role:purchasing']], function() {
-    Route::get('/', function () {
 
+    Route::get('/', function () {
         return view('purchasing.indux');
     });
 
     Route::resource('request', 'RequestController');
-    Route::get('/invoice-pdf', 'RequestController@pdf')->name('pdf');
+    Route::get('/invoice-pdf/{dateone?}/{datetwo?}', 'RequestController@pdf')->name('pdf');
+    // Route::get('/cari', 'RequestController@pdf')->name('pdf');
 
-    // Route::resource('barang', 'ItemController');
-    
 });
 
 Route::group(['prefix' => 'manager', 'middleware' => ['auth', 'role:manager']], function() {
-    Route::get('/', function () {
 
+    Route::get('/', function () {
         return view('manager.index');
     });
 
     Route::get('/permintaan', 'RequestController@acc')->name('manager.acc');
     Route::put('permintaan/{id}', 'RequestController@accpost')->name('manager.barang.post');
-    Route::put('permintaan/decline/{id}', 'RequestController@accpostdecline')->name('manager.barang.post.decline');
-    // Route::get('permintaan', 'ItemController@acc')->name('manager.barang');
+    Route::put('permintaan/decline/{id}', 'RequestController@accpostdecline')->name('manager.barang.post.decline');    
     
 });
 

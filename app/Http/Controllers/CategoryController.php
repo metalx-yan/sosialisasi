@@ -63,7 +63,7 @@ class CategoryController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
-    {
+    {        
         $get = Category::find($id);
         return view('category.edit', compact('get'));
     }
@@ -77,6 +77,7 @@ class CategoryController extends Controller
      */
     public function update(Request $request, $id)
     {
+        
         $vali = $request->validate([
             'name' => "required|unique:categories,name,$id|string"
         ]);

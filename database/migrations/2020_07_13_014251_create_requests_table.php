@@ -15,7 +15,8 @@ class CreateRequestsTable extends Migration
     {
         Schema::create('requests', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->integer('total');
+            $table->integer('total_masuk');
+            $table->integer('total_keluar')->nullable();
             $table->date('date');
             $table->longText('description')->nullable();
             $table->integer('status')->default(0);

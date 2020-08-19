@@ -30,6 +30,7 @@
                         {{-- <th>Tanggal Buat</th> --}}
                         <th>No</th>
                         <th>Nama</th>
+                        <th>Alamat</th>
                         <th>Action</th>
                     </tr>
                 </thead>
@@ -39,6 +40,7 @@
                             {{-- <td>{{ Carbon\Carbon::parse($item->created_at)->format('d F Y') }}</td> --}}
                             <td>{{ $no++ }}</td>
                             <td>{{ $item->name }}</td>
+                            <td>{{ Illuminate\Support\Str::limit($item->address, 20) }}</td>
                             <td> 
                                 <div class="row">
                                     <div class="col-md-2">

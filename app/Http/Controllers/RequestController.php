@@ -13,9 +13,14 @@ class RequestController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $all = Requestt::all();
+        // dd(count($request->all()));
+        if (count($request->all()) == 0) {            
+            $all = Requestt::all();
+        } else {
+            $all = Requestt::whereBetween('date',array($request->from,$request->to))->get();
+        }
         // dd($all);
 
         return view('purchasing.index', compact('all'));
@@ -39,9 +44,11 @@ class RequestController extends Controller
      */
     public function store(Request $request)
     {
-        $store = $request->validate([            
+        // dd($request->all());
+        $store = $request->validate([
             'date'              =>  'required|date',
-            'total'              =>  'required|numeric',
+            'total_masuk'       =>  'required|numeric',
+            'total_keluar'       =>  'numeric',
             'description'        => 'string|nullable',
             'purchase_id'      =>  'required|numeric',
             'item_id'      =>  'required|numeric',
@@ -86,7 +93,7 @@ class RequestController extends Controller
     public function update(Request $request, $id)
     {
         $store = $request->validate([            
-            'total'              =>  'required|numeric',
+            'total_masuk'              =>  'required|numeric',
             'date'              =>  'required|date',
             
             'purchase_id'      =>  'required|numeric',
@@ -94,7 +101,7 @@ class RequestController extends Controller
         ]);
 
         $update = Requestt::findOrFail($id);
-        $update->total = $request->total;
+        $update->total_masuk = $request->total_masuk;
         $update->date = $request->date;
         $update->description = $request->description;
         $update->purchase_id = $request->purchase_id;

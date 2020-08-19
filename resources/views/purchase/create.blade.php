@@ -27,6 +27,12 @@
                         <input type="text" name="name" class="form-control {{ $errors->has('name') ? 'is-invalid' : ''}}" required>
                         {!! $errors->first('name', '<span class="invalid-feedback">:message</span>') !!}
                     </div>
+
+                    <div class="col-md-3">
+                        <label for="">Alamat</label>
+                        <textarea name="address" id="address" cols="40" rows="2" class="form-control {{ $errors->has('address') ? 'is-invalid' : ''}}" required></textarea>                                                
+                        {!! $errors->first('address', '<span class="invalid-feedback">:message</span>') !!}
+                    </div>
                     
                 </div>
                     <br>

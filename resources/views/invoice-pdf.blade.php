@@ -93,7 +93,7 @@
                         <td>{{ $item->item->name }}</td>
                         <td>{{ $item->purchase->name }}</td>
                         <td>{{ $item->date }}</td>
-                        <td>{{ $item->total }}</td>
+                        <td>{{ $item->total_masuk }}</td>
                         <td>{{ Illuminate\Support\Str::limit($item->description, 20) }} </td>
                         @if ($item->status == 0)
                             <td> <span class="badge badge-warning">Belum Diproses</span></td>
