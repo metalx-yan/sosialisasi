@@ -22,7 +22,7 @@ class CreateCategoriesTable extends Migration
         Schema::table('items', function (Blueprint $table) {
             $table->unsignedBigInteger('category_id');
 
-            $table->foreign('category_id')->references('id')->on('categories');
+            $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade');
         });
     }
 

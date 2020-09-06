@@ -17,9 +17,9 @@
                 <ul id="sidebarnav">
                     @if (Auth::user()->role->name == 'administrator')
                     <li class="nav-small-cap">PERSONAL</li>
-                        <li>
+                        {{-- <li>
                         <a class="" href="{{ url('/admin')}}" aria-expanded="false"><i class="mdi mdi-gauge"></i><span class="hide-menu">Dashboard</span></a>
-                        </li>
+                        </li> --}}
 
                         <li>
                             <a class="has-arrow" href="#" aria-expanded="false"><i class="mdi mdi-account-outline"></i><span class="hide-menu">Master Data</span></a>
@@ -52,9 +52,9 @@
 
                     @if (Auth::user()->role->name == 'manager')
                     <li class="nav-small-cap">PERSONAL</li>
-                    <li>
+                    {{-- <li>
                         <a class="" href="{{ url('/manager')}}" aria-expanded="false"><i class="mdi mdi-gauge"></i><span class="hide-menu">Dashboard</span></a>
-                    </li>
+                    </li> --}}
 
                     <li>
                         <a class="has-arrow" href="#" aria-expanded="false"><i class="mdi mdi-account-outline"></i><span class="hide-menu">Data Barang</span></a>

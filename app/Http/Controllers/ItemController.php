@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Item;
 use App\Requestt;
+use Carbon\Carbon;
 
 class ItemController extends Controller
 {
@@ -19,17 +20,24 @@ class ItemController extends Controller
         return view('barang.index', compact('all'));
     }
 
-    public function masuk()
+    public function masuk(Request $request)
     {
-        $masuk = Requestt::where('status', 1)->get();
-
+        if (count($request->all()) == 0) {
+            $masuk = Requestt::where('status', 1)->get();
+        } else {
+            $masuk = Requestt::where('status', 1)->whereBetween('updated_at',array($request->from,$request->to))->get();
+        }
+        
         return view('barang.masuk', compact('masuk'));
     }
 
     public function keluar(Request $request)
     {
-        // dd($request);
-        $keluar = Requestt::where('status', 1)->get();
+        if (count($request->all()) == 0) {
+            $keluar = Requestt::where('status', 1)->get();
+        } else {
+            $keluar = Requestt::where('status', 1)->whereBetween('date_keluar',array($request->from,$request->to))->get();
+        }
 
         return view('barang.keluar', compact('keluar'));
     }
@@ -44,6 +52,7 @@ class ItemController extends Controller
         $update = Requestt::find($request->id);
         $update->total_masuk = $update->total_masuk - $request->total_keluar;
         $update->total_keluar = $request->total_keluar;
+        $update->date_keluar = Carbon::now()->format('Y-m-d');
         $update->save();
 
         return redirect()->route('keluar');

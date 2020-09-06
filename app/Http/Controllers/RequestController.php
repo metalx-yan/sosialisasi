@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Requestt;
 use PDF;
+use Carbon\Carbon;
 
 class RequestController extends Controller
 {
@@ -114,6 +115,7 @@ class RequestController extends Controller
     public function acc(Request $request)
     {
         $all = Requestt::all();
+
         return view('manager.barang', compact('all'));
     }
 
@@ -122,6 +124,7 @@ class RequestController extends Controller
     {
         $update                 = Requestt::findOrFail($id);
         $update->status         = 1;
+        $update->updated_at     = Carbon::now()->format('Y-m-d');
         $update->save();
 
         return redirect()->back();
@@ -131,6 +134,7 @@ class RequestController extends Controller
     {
         $update                 = Requestt::findOrFail($id);
         $update->status         = 2;
+        $update->updated_at     = Carbon::now()->format('Y-m-d');
         $update->save();
 
         return redirect()->back();

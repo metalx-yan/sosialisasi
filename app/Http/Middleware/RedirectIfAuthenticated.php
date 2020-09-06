@@ -20,11 +20,11 @@ class RedirectIfAuthenticated
     {
         if (Auth::guard($guard)->check()) {
             if (Auth::user()->role->name == 'administrator') {
-                return redirect('/admin');
+                return redirect('/admin/barang/masuk');
             } elseif (Auth::user()->role->name == 'purchasing') {
-                return redirect('/purchasing');
+                return redirect('/purchasing/request');
             }else {
-                return redirect('/manager');
+                return redirect('/manager/permintaan');
             }
         }
 
