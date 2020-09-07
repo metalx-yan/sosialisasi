@@ -43,6 +43,7 @@
                     <tr>
                         <th>No</th>
                         <th>Barang</th>
+                        <th>Tanggal</th>
                         <th>Supplier</th>
                         <th>Jumlah</th>
                         <th>Status</th>
@@ -53,6 +54,7 @@
                         <tr>
                             <td>{{ $no++ }}</td>
                             <td>{{ $item->item->name }}</td>
+                            <td>{{ Carbon\Carbon::parse($item->updated_at)->format('d-m-Y') }}</td>
                             <td>{{ $item->purchase->name }}</td>
                             <td>{{ $item->total_masuk }}</td>
                             @if ($item->status == 0)

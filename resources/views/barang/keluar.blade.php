@@ -100,6 +100,7 @@
                     <tr>
                         <th>No</th>
                         <th>Barang</th>
+                        <th>Tanggal</th>
                         <th>Supplier</th>
                         <th>Jumlah</th>
                     </tr>
@@ -113,6 +114,7 @@
                         <tr>
                             <td>{{ $no++ }}</td>
                             <td>{{ $item->item->name }}</td>
+                            <td>{{ Carbon\Carbon::parse($item->date_keluar)->format('d-m-Y') }}</td>
                             <td>{{ $item->purchase->name }}</td>
                             <td>{{ $item->total_keluar }}</td>
                         </tr>
