@@ -24,53 +24,46 @@
                         <li>
                             <a class="has-arrow" href="#" aria-expanded="false"><i class="mdi mdi-account-outline"></i><span class="hide-menu">Master Data</span></a>
                             <ul aria-expanded="false" class="collapse">
-                                <li><a href="{{ route('kategori.index') }}">Data Kategori</a></li>
                                 <li><a href="{{ route('barang.index') }}">Data Barang</a></li>
-                                <li><a href="{{ route('purchase.index') }}">Data Supplier</a></li>
+                                <li><a href="{{ route('bahan.index') }}">Data Bahan</a></li>
+                                <li><a href="{{ route('returpenjualan.index') }}">Data Retur Penjualan</a></li>
+                                <li><a href="{{ route('spb') }}">Data SPB</a></li>
                             </ul>
                         </li>
-                        <li><a href="{{ route('masuk') }}"><i class="mdi mdi-checkbox-marked-circle-outline"></i>Barang Masuk</a></li>
-                        <li><a href="{{ route('keluar') }}"><i class="mdi mdi-checkbox-multiple-marked-outline"></i>Barang Keluar</a></li>
-                       
-                    @endif
-                    
-                    
-                    @if (Auth::user()->role->name == 'purchasing')
-                    <li class="nav-small-cap">PERSONAL</li>
-                    {{-- <li>
-                        <a class="" href="{{ route('request.index') }}" aria-expanded="false"><i class="mdi mdi-gauge"></i><span class="hide-menu">Dashboard Permintaan Barang</span></a>
-                    </li> --}}
+                        {{-- <li><a href="{{ route('masuk') }}"><i class="mdi mdi-checkbox-marked-circle-outline"></i>Barang Masuk</a></li>
+                        <li><a href="{{ route('keluar') }}"><i class="mdi mdi-checkbox-multiple-marked-outline"></i>Barang Keluar</a></li> --}}
 
+                    @endif
+
+
+                    @if (Auth::user()->role->name == 'ppic')
+                    <li class="nav-small-cap">PERSONAL</li>
                     <li>
-                        <a class="has-arrow" href="#" aria-expanded="false"><i class="mdi mdi-account-outline"></i><span class="hide-menu">Dashboard</span></a>
+                        <a class="has-arrow" href="#" aria-expanded="false"><i class="mdi mdi-account-outline"></i><span class="hide-menu">Master Data</span></a>
                         <ul aria-expanded="false" class="collapse">
-                            <li><a href="{{ route('request.index') }}">Permintaan Barang</a></li>
+                            <li><a href="{{ route('prosesretur.index') }}">Data Proses Retur</a></li>
                         </ul>
                     </li>
-                      
+
                     @endif
 
-                    @if (Auth::user()->role->name == 'manager')
+                    @if (Auth::user()->role->name == 'produksi')
                     <li class="nav-small-cap">PERSONAL</li>
-                    {{-- <li>
-                        <a class="" href="{{ url('/manager')}}" aria-expanded="false"><i class="mdi mdi-gauge"></i><span class="hide-menu">Dashboard</span></a>
-                    </li> --}}
 
                     <li>
-                        <a class="has-arrow" href="#" aria-expanded="false"><i class="mdi mdi-account-outline"></i><span class="hide-menu">Data Barang</span></a>
+                        <a class="has-arrow" href="#" aria-expanded="false"><i class="mdi mdi-account-outline"></i><span class="hide-menu">Master Data</span></a>
                         <ul aria-expanded="true" class="collapse">
-                            <li><a href="{{ route('manager.acc') }}">Permintaan Barang</a></li>
-                            
+                            <li><a href="">Data Proses Retur</a></li>
                         </ul>
                     </li>
-                      
+
                     @endif
                 </ul>
             </nav>
             <!-- End Sidebar navigation -->
         </div>
     </aside>
-        
+
         {{-- <li>
             <a class="has-arrow " href="#" aria-expanded="false"><i class="mdi mdi-widgets"></i><span class="hide-menu">Widgets</span></a>
             <ul aria-expanded="false" class="collapse">
@@ -79,7 +72,7 @@
                 <li><a href="widget-charts.html">Widget Charts</a></li>
             </ul>
         </li> --}}
-        
+
         {{-- <li>
             <a class="has-arrow " href="#" aria-expanded="false"><i class="mdi mdi-book-multiple"></i><span class="hide-menu">Page Layout</span></a>
             <ul aria-expanded="false" class="collapse">
@@ -91,4 +84,3 @@
                 <li><a href="layout-logo-center.html">Logo in Center</a></li>
             </ul>
         </li> --}}
-        

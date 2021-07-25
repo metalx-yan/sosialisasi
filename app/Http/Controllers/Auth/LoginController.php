@@ -48,12 +48,12 @@ class LoginController extends Controller
     public function redirectTo()
     {
         if (Auth::user()->role->name == 'administrator') {
-            return '/admin/barang/masuk';
-        } 
-        elseif (Auth::user()->role->name == 'purchasing') {
-            return '/purchasing/request';
+            return '/admin';
+        }
+        elseif (Auth::user()->role->name == 'ppic') {
+            return '/ppic';
         } else {
-            return '/manager/permintaan';
+            return '/produksi';
         }
     }
 

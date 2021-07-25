@@ -19,48 +19,36 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'role:administrator'
         return view('admin.index');
     });
 
-    Route::get('/barang/masuk', 'ItemController@masuk')->name('masuk');
-
-    Route::get('/barang/keluar', 'ItemController@keluar')->name('keluar');
-
-    Route::put('/barang/keluar/{id?}', 'ItemController@keluarpost')->name('keluarpost');
-
-    Route::resource('barang', 'ItemController');
-
-    Route::resource('kategori', 'CategoryController');
-
-    Route::resource('purchase', 'PurchaseController');
-        
+    Route::resource('barang', 'BarangController');
+    Route::resource('bahan', 'BahanController');
+    Route::resource('returpenjualan', 'ReturPenjualanController');
+    Route::post('/prosesret', 'ProsesReturController@proses')->name('prosesret');
+    Route::get('/spb', 'ReturPenjualanController@spb')->name('spb');
 });
 
-Route::group(['prefix' => 'purchasing', 'middleware' => ['auth', 'role:purchasing']], function() {
+Route::group(['prefix' => 'ppic', 'middleware' => ['auth', 'role:ppic']], function() {
 
     Route::get('/', function () {
-        return view('purchasing.indux');
+        return view('ppic.indux');
     });
+    Route::put('/prosesret/process/{id}', 'ProsesReturController@prosesacc')->name('prosesretacc');
+    Route::put('/prosesret/decline/{id}', 'ProsesReturController@prosesdec')->name('prosesretdec');
 
-    Route::resource('request', 'RequestController');
-    Route::get('/invoice-pdf/{dateone?}/{datetwo?}', 'RequestController@pdf')->name('pdf');
-    // Route::get('/cari', 'RequestController@pdf')->name('pdf');
-
+    Route::resource('prosesretur', 'ProsesReturController');
 });
 
-Route::group(['prefix' => 'manager', 'middleware' => ['auth', 'role:manager']], function() {
+Route::group(['prefix' => 'produksi', 'middleware' => ['auth', 'role:produksi']], function() {
 
     Route::get('/', function () {
-        return view('manager.index');
+        return view('produksi.index');
     });
 
-    Route::get('/permintaan', 'RequestController@acc')->name('manager.acc');
-    Route::put('permintaan/{id}', 'RequestController@accpost')->name('manager.barang.post');
-    Route::put('permintaan/decline/{id}', 'RequestController@accpostdecline')->name('manager.barang.post.decline');    
-    
 });
 
 
 Route::get('/', function () {
 
-    return view('welcome', compact('schema', 'records'));
+    return view('welcome');
 });
 
 Auth::routes();
