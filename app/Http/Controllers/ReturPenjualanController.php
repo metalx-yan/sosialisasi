@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\ReturPenjualan;
+use App\ProsesRetur;
+use App\SpbProduksi;
 
 class ReturPenjualanController extends Controller
 {
@@ -15,6 +17,9 @@ class ReturPenjualanController extends Controller
     public function spb()
     {
         $data = ReturPenjualan::where('status', 1)->get();
+        // $d1 = SpbProduksi::where('proses_retur_id', 1)->first();
+        // dd($d1->status);
+
         return view('returs.spb', compact('data'));
     }
 
@@ -127,9 +132,11 @@ class ReturPenjualanController extends Controller
         $user->harga_jual   = $request->harga_jual;
         $user->barang_id    = $request->barang_id;
         $user->total        = $request->harga_jual * $request->qty;
-
+        $user->status       = 3;
         $user->save();
 
+        $user = ProsesRetur::findOrFail($id);
+        $user->delete();
         return redirect()->route('returpenjualan.index');
     }
 

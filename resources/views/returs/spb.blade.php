@@ -35,6 +35,7 @@
                         <th>Satuan</th>
                         <th>Berat/Lbr</th>
                         <th>Total Bahan(Kg)</th>
+                        <th>Action</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -50,6 +51,33 @@
                             <td>{{ $item->satuan }}</td>
                             <td>{{ $item->barang->bahans->sum('qty') }}</td>
                             <td>{{ $item->qty * $item->barang->bahans->sum('qty') }}</td>
+                            <td>
+                                @php
+                                    $d1 = App\SpbProduksi::where('proses_retur_id', $item->id)->first();
+                                @endphp
+
+                                @if ($d1 == null)
+
+                                <form action="{{ route('spbproduksi.store') }}" method="post">
+                                    @csrf
+                                <input type="hidden" name="id" value="{{ $item->id }}">
+                                <input type="hidden" name="po" value="{{ $item->po }}">
+                                <input type="hidden" name="tanggal" value="{{ $item->tanggal }}">
+                                <input type="hidden" name="retur" value="{{ $item->retur }}">
+                                <input type="hidden" name="customer" value="{{ $item->customer }}">
+                                <input type="hidden" name="jenis" value="{{ $item->barang->jenis }}">
+                                <input type="hidden" name="qty" value="{{ $item->qty }}">
+                                <input type="hidden" name="satuan" value="{{ $item->satuan }}">
+                                <input type="hidden" name="berat" value="{{ $item->barang->bahans->sum('qty') }}">
+                                <input type="hidden" name="total_bahan" value="{{ $item->qty * $item->barang->bahans->sum('qty') }}">
+                                <button type="submit" class="btn btn-primary btn-sm">Kirim ke Produksi</button>
+                                </form>
+                                    @else
+                                        @if ($d1->status == 1)
+                                            <span style="color:green">Terkirim ke Produksi</span>
+                                        @endif
+                                @endif
+                            </td>
                         </tr>
                     @endforeach
                 </tbody>

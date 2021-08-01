@@ -25,6 +25,8 @@ class CreateReturPenjualansTable extends Migration
             $table->integer('harga_jual');
             $table->integer('total');
             $table->string('status');
+            $table->string('mesin')->nullable();
+            $table->string('planproduksi')->nullable();
             $table->timestamps();
         });
 

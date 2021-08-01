@@ -53,7 +53,7 @@ class UserTableSeeder extends Seeder
             'harga_jual' => 12313,
             'total' => 12313 * 121,
             'barang_id' => 1,
-            'status' => 0
+            'status' => 3
         ]);
     }
 }

@@ -38,6 +38,7 @@
                         <th>Keterangan Retur</th>
                         <th>Harga Jual (Satuan) Inc Tax</th>
                         <th>Total Retur</th>
+                        <th>Action</th>
                         <th>Status</th>
                     </tr>
                 </thead>
@@ -56,7 +57,29 @@
                             <td>{{ $item->harga_jual }}</td>
                             <td>{{ $item->total }}</td>
                             <td>
+                                @if ($item->status == 0)
+
+                                    <div>
+                                        <a href="{{ route('returpenjualan.edit', $item->id ) }}" class="btn btn-warning btn-sm">Edit</a>
+                                    </div>
+                                    <br>
+                                    <div >
+                                        <form action="{{ route('returpenjualan.destroy', $item->id) }}" method="post">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure you want to Remove?');">Delete</button>
+                                        </form>
+                                    </div>
+                                @else
+
+                                @endif
+                            </td>
+                            <td>
                                 @if ($item->status == 1)
+                                    <span style="color:green">Process</span>
+                                @elseif ($item->status == 0)
+                                    <span style="color:red">Decline</span>
+                                @elseif ($item->status == 2)
                                     <span style="color:green">Terkirim ke PPIC</span>
                                 @else
                                     <form action="{{ route('prosesret') }}" method="post">

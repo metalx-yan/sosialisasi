@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\ProsesRetur;
 use App\ReturPenjualan;
+use App\SpkProduksi;
 
 class ProsesReturController extends Controller
 {
@@ -13,10 +14,28 @@ class ProsesReturController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function data(Request $request,$id)
+    {
+
+        $user = ReturPenjualan::findOrFail($request->id);
+        $user->mesin = $request->mesin;
+        $user->planproduksi = $request->produksi;
+        $user->save();
+
+        return redirect()->back();
+    }
+
+    public function spk()
+    {
+        $data = ReturPenjualan::where('status', 1)->get();
+        // $d1 = SpkProduksi::where('retur_penjualan_id', 1)->first();
+        // dd($d1->status);
+        return view('prosesreturs.spk',compact('data'));
+    }
 
     public function proses(Request $request)
     {
-        // dd($request->all());
+        // dd($request->all(), $request->id);
         ProsesRetur::create([
             'po' => $request->po,
             'tanggal' => $request->tanggal,
@@ -26,11 +45,12 @@ class ProsesReturController extends Controller
             'satuan' => $request->satuan,
             'keterangan' => $request->keterangan,
             'barang_id' => $request->barang_id,
-            'status' => 0
+            'status' => 0,
+            'retur_penjualan_id' => $request->id
         ]);
 
         $user = ReturPenjualan::findOrFail($request->id);
-        $user->status = 1;
+        $user->status = 2;
         $user->save();
 
         return redirect()->route('returpenjualan.index');
@@ -38,20 +58,25 @@ class ProsesReturController extends Controller
 
     public function prosesacc(Request $request,$id)
     {
+        // dd($request->all());
         $user = ProsesRetur::findOrFail($request->id);
         $user->status = 1;
         $user->save();
-
+        $user = ReturPenjualan::findOrFail($request->retur_penjualan_id);
+        $user->status = 1;
+        $user->save();
         return redirect()->back();
     }
 
     public function prosesdec(Request $request,$id)
     {
         // dd($request->all());
-        $user = ProsesRetur::findOrFail($id);
+        $user = ProsesRetur::findOrFail($request->id);
         $user->status = 2;
         $user->save();
-
+        $user = ReturPenjualan::findOrFail($request->retur_penjualan_id);
+        $user->status = 0;
+        $user->save();
         return redirect()->back();
     }
 

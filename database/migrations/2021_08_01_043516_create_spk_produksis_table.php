@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateProsesRetursTable extends Migration
+class CreateSpkProduksisTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,26 +13,25 @@ class CreateProsesRetursTable extends Migration
      */
     public function up()
     {
-        Schema::create('proses_returs', function (Blueprint $table) {
+        Schema::create('spk_produksis', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('po');
-            $table->date('tanggal');
             $table->string('retur');
             $table->string('customer');
-            $table->integer('qty');
+            $table->string('jenis');
             $table->string('satuan');
-            $table->string('keterangan');
-            $table->string('status')->nullable();
+            $table->string('mesin');
+            $table->string('berat');
+            $table->boolean('status')->nullable();
             $table->timestamps();
         });
 
-        Schema::table('proses_returs', function (Blueprint $table) {
-            $table->unsignedBigInteger('barang_id');
+        Schema::table('spk_produksis', function (Blueprint $table) {
             $table->unsignedBigInteger('retur_penjualan_id');
 
-            $table->foreign('barang_id')->references('id')->on('barangs')->onDelete('cascade');
             $table->foreign('retur_penjualan_id')->references('id')->on('retur_penjualans')->onDelete('cascade');
         });
+
     }
 
     /**
@@ -42,6 +41,6 @@ class CreateProsesRetursTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('proses_returs');
+        Schema::dropIfExists('spk_produksis');
     }
 }

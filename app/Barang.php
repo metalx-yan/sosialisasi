@@ -22,4 +22,14 @@ class Barang extends Model
     {
         return $this->hasMany(ProsesRetur::class);
     }
+
+    public function spkproduksi()
+    {
+        return $this->hasMany(SpkProduksi::class);
+    }
+
+    public function spbproduksi()
+    {
+        return $this->hasMany(SpbProduksi::class);
+    }
 }

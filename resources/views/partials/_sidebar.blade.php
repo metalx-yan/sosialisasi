@@ -42,6 +42,7 @@
                         <a class="has-arrow" href="#" aria-expanded="false"><i class="mdi mdi-account-outline"></i><span class="hide-menu">Master Data</span></a>
                         <ul aria-expanded="false" class="collapse">
                             <li><a href="{{ route('prosesretur.index') }}">Data Proses Retur</a></li>
+                            <li><a href="{{ route('spk') }}">Data SPK</a></li>
                         </ul>
                     </li>
 
@@ -53,7 +54,7 @@
                     <li>
                         <a class="has-arrow" href="#" aria-expanded="false"><i class="mdi mdi-account-outline"></i><span class="hide-menu">Master Data</span></a>
                         <ul aria-expanded="true" class="collapse">
-                            <li><a href="">Data Proses Retur</a></li>
+                            <li><a href="{{ route('spbspk') }}">Data Proses Retur</a></li>
                         </ul>
                     </li>
 

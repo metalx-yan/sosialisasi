@@ -55,6 +55,7 @@
                                     @csrf
                                     @method('PUT')
                                     <input type="hidden" name="id" value="{{ $item->id }}">
+                                    <input type="hidden" name="retur_penjualan_id" value="{{ $item->retur_penjualan_id }}">
                                     <input type="hidden" name="process" value="1">
                                         <button type="submit" class="btn btn-sm btn-primary">Process</button>
                                     </form>
