@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class ReturPenjualan extends Model
 {
-    protected $fillable = ['po', 'tanggal', 'retur', 'customer', 'qty', 'satuan', 'satuan', 'keterangan', 'harga_jual', 'total', 'barang_id','status','mesin','planproduksi'];
+    protected $fillable = ['po', 'tanggal', 'retur', 'customer', 'qty', 'satuan', 'keterangan', 'harga_jual', 'total', 'barang_id','status','mesin','planproduksi'];
 
     public function barang()
     {
