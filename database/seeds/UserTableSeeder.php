@@ -32,28 +32,6 @@ class UserTableSeeder extends Seeder
             'role_id' => 3
         ]);
 
-        App\Barang::create([
-            'jenis' => 'test',
-        ]);
 
-        App\Bahan::create([
-            'bahan' => 'test',
-            'qty' => 12,
-            'barang_id' => 1,
-        ]);
-
-        App\ReturPenjualan::create([
-            'po' => 'wadaw',
-            'tanggal' => '2021/02/02',
-            'retur' => 'aawd',
-            'customer' => 'awdawd',
-            'qty' => 121,
-            'satuan' => 'awdwad',
-            'keterangan' => 'adadaw',
-            'harga_jual' => 12313,
-            'total' => 12313 * 121,
-            'barang_id' => 1,
-            'status' => 3
-        ]);
     }
 }
