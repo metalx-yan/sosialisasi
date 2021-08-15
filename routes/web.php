@@ -19,12 +19,16 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'role:administrator'
         return view('admin.index');
     });
 
-    Route::resource('barang', 'BarangController');
-    Route::resource('bahan', 'BahanController');
-    Route::resource('returpenjualan', 'ReturPenjualanController');
-    Route::post('/prosesret', 'ProsesReturController@proses')->name('prosesret');
-    Route::get('/spb', 'ReturPenjualanController@spb')->name('spb');
-    Route::resource('spbproduksi', 'SpbProduksiController');
+   Route::resource('kecamatan', 'KecamatanController');
+   Route::resource('kelurahan', 'KelurahanController');
+   Route::resource('pengemis', 'PengemisController');
+   Route::resource('pemulung', 'PemulungController');
+   Route::resource('migran', 'MigranController');
+   Route::resource('binaan', 'BinaanController');
+   Route::resource('kekerasan', 'KekerasanController');
+   Route::resource('terlantar', 'TerlantarController');
+   Route::resource('psikologis', 'PsikologisController');
+   Route::resource('napza', 'NapzaController');
 });
 
 Route::group(['prefix' => 'ppic', 'middleware' => ['auth', 'role:ppic']], function() {
@@ -32,12 +36,7 @@ Route::group(['prefix' => 'ppic', 'middleware' => ['auth', 'role:ppic']], functi
     Route::get('/', function () {
         return view('ppic.indux');
     });
-    Route::put('/prosesret/process/{id}', 'ProsesReturController@prosesacc')->name('prosesretacc');
-    Route::put('/prosesret/decline/{id}', 'ProsesReturController@prosesdec')->name('prosesretdec');
-    Route::put('/prosesret/data/{id}', 'ProsesReturController@data')->name('data');
-    Route::get('/spk', 'ProsesReturController@spk')->name('spk');
-    Route::resource('prosesretur', 'ProsesReturController');
-    Route::resource('spkproduksi', 'SpkProduksiController');
+
 });
 
 Route::group(['prefix' => 'produksi', 'middleware' => ['auth', 'role:produksi']], function() {

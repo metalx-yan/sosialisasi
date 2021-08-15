@@ -24,10 +24,16 @@
                         <li>
                             <a class="has-arrow" href="#" aria-expanded="false"><i class="mdi mdi-account-outline"></i><span class="hide-menu">Master Data</span></a>
                             <ul aria-expanded="false" class="collapse">
-                                <li><a href="{{ route('barang.index') }}">Data Barang</a></li>
-                                <li><a href="{{ route('bahan.index') }}">Data Bahan</a></li>
-                                <li><a href="{{ route('returpenjualan.index') }}">Data Retur Penjualan</a></li>
-                                <li><a href="{{ route('spb') }}">Data SPB</a></li>
+                                <li><a href="{{ route('kecamatan.index') }}">Data Kecamatan</a></li>
+                                <li><a href="{{ route('kelurahan.index') }}">Data Kelurahan</a></li>
+                                <li><a href="{{ route('pengemis.index') }}">Data Pengemis</a></li>
+                                <li><a href="{{ route('pemulung.index') }}">Data Pemulung</a></li>
+                                <li><a href="{{ route('migran.index') }}">Data Migran</a></li>
+                                <li><a href="{{ route('binaan.index') }}">Data Binaan</a></li>
+                                <li><a href="{{ route('kekerasan.index') }}">Data Kekerasan</a></li>
+                                <li><a href="{{ route('terlantar.index') }}">Data Terlantar</a></li>
+                                <li><a href="{{ route('psikologis.index') }}">Data Psikologis</a></li>
+                                <li><a href="{{ route('napza.index') }}">Data Napza</a></li>
                             </ul>
                         </li>
                         {{-- <li><a href="{{ route('masuk') }}"><i class="mdi mdi-checkbox-marked-circle-outline"></i>Barang Masuk</a></li>

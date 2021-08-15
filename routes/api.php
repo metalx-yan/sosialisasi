@@ -13,4 +13,5 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::get('/keluar', 'ApiController@keluar');
+Route::get('/kelurahan', 'ApiController@kelurahan');
+Route::get('/kel', 'ApiController@kelurahanAll');
