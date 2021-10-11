@@ -38,8 +38,11 @@
     <!-- ============================================================== -->
     <!-- background-image:url(../assets/images/background/login-register.jpg); -->
     <section id="wrapper">
-        <div class="login-register" style="background-color:lavender">        
+        <div class="login-register" style="background-color:lavender">
             <div class="login-box card" style="border-radius: 15px">
+            <img src="{{ asset('/images/logo.png') }}" alt="" height="80px" width="90px" style="display: block;
+            margin-left: auto;margin-top: 10px;
+            margin-right: auto;">
             <div class="card-body" >
                 <center>
                     {{-- <img src="http://www.prospera-perwira.com/img/logo_prospera.png" height="50%" width="60%" alt=""> --}}
@@ -81,11 +84,11 @@
                         <br>
                         <a href="{{ url('/') }}" class="btn btn-danger btn-sm btn-block  waves-effect waves-light">Back to Home</a>
                 </form>
-               
+
             </div>
           </div>
         </div>
-        
+
     </section>
     <!-- ============================================================== -->
     <!-- End Wrapper -->
