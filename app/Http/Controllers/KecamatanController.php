@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Kecamatan;
+use Illuminate\Support\Facades\DB;
 
 class KecamatanController extends Controller
 {
@@ -15,8 +16,20 @@ class KecamatanController extends Controller
     public function index()
     {
         $data = Kecamatan::all();
+        $dat = Kecamatan::select(DB::raw('count(name) as `count`'),  DB::raw('MONTH(created_at) month'))
+        ->groupby('month')
+        ->get();
 
-        return view('kecamatans.index',compact('data'));
+        $as = [];
+        $asa = [];
+        foreach ($dat as $value) {
+            $as[] = $value->count;
+            $asa[] = date("F", mktime(0, 0, 0, $value->month, 10));
+        }
+
+        // dd(json_encode($asa));
+
+        return view('kecamatans.index',compact('data','as','asa'));
     }
 
     /**

@@ -17,10 +17,15 @@
         <div class="card-title">
 
         </div>
+
         @php
             $no = 1;
         @endphp
         <div class="card-body">
+            <figure class="highcharts-figure">
+                <div id="container"></div>
+            </figure>
+
             <a href="{{ route('kecamatan.create') }}" class="btn btn-primary btn-sm">Tambah Kecamatan</a>
             <br>
             <br>
@@ -69,6 +74,11 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
     <script src="https://cdn.datatables.net/buttons/2.0.1/js/buttons.html5.min.js"></script>
     <script src="https://cdn.datatables.net/buttons/2.0.1/js/buttons.print.min.js"></script>
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+    <script src="https://code.highcharts.com/modules/series-label.js"></script>
+    <script src="https://code.highcharts.com/modules/exporting.js"></script>
+    <script src="https://code.highcharts.com/modules/export-data.js"></script>
+    <script src="https://code.highcharts.com/modules/accessibility.js"></script>
 
     <script>
         $(document).ready( function () {
@@ -79,6 +89,50 @@
                 ]
             });
         } );
+
+        Highcharts.chart('container', {
+    chart: {
+        type: 'spline'
+    },
+    title: {
+        text: 'Grafik Kecamatan'
+    },
+
+    xAxis: {
+        categories: {!! json_encode($asa) !!}
+    },
+    yAxis: {
+        title: {
+            text: 'Temperature'
+        },
+        labels: {
+            formatter: function () {
+                return this.value ;
+            }
+        }
+    },
+    tooltip: {
+        crosshairs: true,
+        shared: true
+    },
+    plotOptions: {
+        spline: {
+            marker: {
+                radius: 4,
+                lineColor: '#666666',
+                lineWidth: 1
+            }
+        }
+    },
+    series: [{
+        name: '2021',
+        marker: {
+            symbol: 'square'
+        },
+        data: {!! json_encode($as) !!}
+
+    }]
+});
     </script>
 
 @endsection
